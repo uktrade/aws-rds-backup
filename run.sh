@@ -3,7 +3,7 @@
 env -
 export $(cat /.env | xargs)
 
-DATE=$(date +%Y-%m-%dT%H:%M:%S.%NZ)
+DATE=$(date +%Y-%m-%dT%H%M%SZ)
 EXPIRE_DATE=$(date -d "-$RDS_RETENTION days" +%s)
 
 aws rds create-db-snapshot --db-instance-identifier $RDS_ID --db-snapshot-identifier "$RDS_ID-$DATE"
